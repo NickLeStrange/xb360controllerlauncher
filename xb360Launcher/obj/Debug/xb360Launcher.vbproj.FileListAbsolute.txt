@@ -1,0 +1,13 @@
+C:\Users\Nick\AppData\Local\Temporary Projects\xb360Launcher\bin\Debug\xb360Launcher.exe.config
+C:\Users\Nick\Documents\Visual Studio 2013\Projects\xb360Launcher\xb360Launcher\bin\Debug\xb360Launcher.exe.config
+C:\Users\Nick\Documents\Visual Studio 2013\Projects\xb360Launcher\xb360Launcher\obj\Debug\xb360Launcher.frmMain.resources
+C:\Users\Nick\Documents\Visual Studio 2013\Projects\xb360Launcher\xb360Launcher\obj\Debug\xb360Launcher.Resources.resources
+C:\Users\Nick\Documents\Visual Studio 2013\Projects\xb360Launcher\xb360Launcher\obj\Debug\xb360Launcher.vbproj.GenerateResource.Cache
+C:\Users\Nick\Documents\Visual Studio 2013\Projects\xb360Launcher\xb360Launcher\bin\Debug\xb360Launcher.exe
+C:\Users\Nick\Documents\Visual Studio 2013\Projects\xb360Launcher\xb360Launcher\bin\Debug\xb360Launcher.pdb
+C:\Users\Nick\Documents\Visual Studio 2013\Projects\xb360Launcher\xb360Launcher\bin\Debug\xb360Launcher.xml
+C:\Users\Nick\Documents\Visual Studio 2013\Projects\xb360Launcher\xb360Launcher\bin\Debug\Microsoft.Xna.Framework.dll
+C:\Users\Nick\Documents\Visual Studio 2013\Projects\xb360Launcher\xb360Launcher\bin\Debug\Microsoft.Xna.Framework.xml
+C:\Users\Nick\Documents\Visual Studio 2013\Projects\xb360Launcher\xb360Launcher\obj\Debug\xb360Launcher.exe
+C:\Users\Nick\Documents\Visual Studio 2013\Projects\xb360Launcher\xb360Launcher\obj\Debug\xb360Launcher.xml
+C:\Users\Nick\Documents\Visual Studio 2013\Projects\xb360Launcher\xb360Launcher\obj\Debug\xb360Launcher.pdb
