@@ -148,11 +148,7 @@ Public Class frmMain
         'Check if Steam or Kodi is running.
         CheckIfRunning()
 
-        If SteamIsRunning = True Then
-            'Steam is running
-        ElseIf KodiIsRunning = True Then
-            'Kodi is running
-        Else
+        If SteamIsRunning = False And KodiIsRunning = False Then
             'Neither Steam nor Kodi is running, so make use of the buttons.
             If currentState.IsConnected Then
                 If ControllerConnected = False Then
@@ -173,87 +169,87 @@ Public Class frmMain
                     End If
                 End If
 
-                    'Use the DPAD to go left.
-                    If currentState.DPad.Left = ButtonState.Pressed Then
-                        DPadLeft = True
-                    ElseIf currentState.DPad.Left = ButtonState.Released Then
-                        If DPadLeft = True Then
-                            If CurrentButton = 1 Then
-                                btnExit.Focus()
-                                DPadLeft = False
-                            ElseIf CurrentButton = 2 Then
-                                btnSteam.Focus()
-                                DPadLeft = False
-                            ElseIf CurrentButton = 3 Then
-                                btnKodi.Focus()
-                                DPadLeft = False
-                            End If
-                        End If
-                    End If
-
-                    'Use the DPAD to go Right.
-                    If currentState.DPad.Right = ButtonState.Pressed Then
-                        DPadRight = True
-                    ElseIf currentState.DPad.Right = ButtonState.Released Then
-                        If DPadRight = True Then
-                            If CurrentButton = 1 Then
-                                btnKodi.Focus()
-                                DPadRight = False
-                            ElseIf CurrentButton = 2 Then
-                                btnExit.Focus()
-                                DPadRight = False
-                            ElseIf CurrentButton = 3 Then
-                                btnSteam.Focus()
-                                DPadRight = False
-                            End If
-                        End If
-                    End If
-
-                    'Use the Start button to show the launcher.
-                    If currentState.Buttons.Start = ButtonState.Pressed Then
-                        StartPressed = True
-                    ElseIf currentState.Buttons.Start = ButtonState.Released Then
-                        If StartPressed = True Then
-                            If Me.Visible = True Then
-                                Me.Visible = False
-                                NotifyIcon.Visible = True
-                                StartPressed = False
-                            ElseIf Me.Visible = False Then
-                                Me.Visible = True
-                                FadeFormIn()
-                                NotifyIcon.Visible = False
-                                StartPressed = False
-                            End If
-                        End If
-                    End If
-
-                    'Use the left analogue stick to select between apps.
-                    If currentState.ThumbSticks.Left.X = 1 Then
-
-                        'When pressing left on the analogue stick it cycles through the buttons to the left.
-                        If CurrentButton = 1 Then
-                            btnKodi.Focus()
-
-                        ElseIf CurrentButton = 2 Then
-                            btnExit.Focus()
-
-                        ElseIf CurrentButton = 3 Then
-                            btnSteam.Focus()
-
-                        End If
-                    ElseIf currentState.ThumbSticks.Left.X = -1 Then
-                        'When pressing left on the analogue stick it cycles through the buttons to the right.
+                'Use the DPAD to go left.
+                If currentState.DPad.Left = ButtonState.Pressed Then
+                    DPadLeft = True
+                ElseIf currentState.DPad.Left = ButtonState.Released Then
+                    If DPadLeft = True Then
                         If CurrentButton = 1 Then
                             btnExit.Focus()
-
+                            DPadLeft = False
                         ElseIf CurrentButton = 2 Then
                             btnSteam.Focus()
-
+                            DPadLeft = False
                         ElseIf CurrentButton = 3 Then
                             btnKodi.Focus()
-
+                            DPadLeft = False
                         End If
                     End If
+                End If
+
+                'Use the DPAD to go Right.
+                If currentState.DPad.Right = ButtonState.Pressed Then
+                    DPadRight = True
+                ElseIf currentState.DPad.Right = ButtonState.Released Then
+                    If DPadRight = True Then
+                        If CurrentButton = 1 Then
+                            btnKodi.Focus()
+                            DPadRight = False
+                        ElseIf CurrentButton = 2 Then
+                            btnExit.Focus()
+                            DPadRight = False
+                        ElseIf CurrentButton = 3 Then
+                            btnSteam.Focus()
+                            DPadRight = False
+                        End If
+                    End If
+                End If
+
+                'Use the Start button to show the launcher.
+                If currentState.Buttons.Start = ButtonState.Pressed Then
+                    StartPressed = True
+                ElseIf currentState.Buttons.Start = ButtonState.Released Then
+                    If StartPressed = True Then
+                        If Me.Visible = True Then
+                            Me.Visible = False
+                            NotifyIcon.Visible = True
+                            StartPressed = False
+                        ElseIf Me.Visible = False Then
+                            Me.Visible = True
+                            FadeFormIn()
+                            NotifyIcon.Visible = False
+                            StartPressed = False
+                        End If
+                    End If
+                End If
+
+                'Use the left analogue stick to select between apps.
+                If currentState.ThumbSticks.Left.X = 1 Then
+
+                    'When pressing left on the analogue stick it cycles through the buttons to the left.
+                    If CurrentButton = 1 Then
+                        btnKodi.Focus()
+
+                    ElseIf CurrentButton = 2 Then
+                        btnExit.Focus()
+
+                    ElseIf CurrentButton = 3 Then
+                        btnSteam.Focus()
+
+                    End If
+                ElseIf currentState.ThumbSticks.Left.X = -1 Then
+                    'When pressing left on the analogue stick it cycles through the buttons to the right.
+                    If CurrentButton = 1 Then
+                        btnExit.Focus()
+
+                    ElseIf CurrentButton = 2 Then
+                        btnSteam.Focus()
+
+                    ElseIf CurrentButton = 3 Then
+                        btnKodi.Focus()
+
+                    End If
+                End If
 
             Else
                 ControllerConnected = False
