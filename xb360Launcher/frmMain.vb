@@ -73,6 +73,22 @@ Public Class frmMain
 
 #End Region
 
+#Region "NOTIFYICON"
+
+    Private Sub NotifyIcon_MouseClick(sender As Object, e As MouseEventArgs) Handles NotifyIcon.MouseClick
+        'If the notify icon is right clicked, show the toolstripmenu named NotifyIconMenu at the position of the click.
+        If e.Button = MouseButtons.Right Then
+            NotifyIconMenu.Show(Cursor.Position)
+        End If
+    End Sub
+
+    Private Sub NotifyIconMenuExit_Click(sender As Object, e As EventArgs) Handles NotifyIconMenuExit.Click
+        'When the menu item Exit is clicked, exit the application.
+        Application.Exit()
+    End Sub
+
+#End Region
+
 #Region "BUTTONS"
 
     Public Sub ButtonBorders()
