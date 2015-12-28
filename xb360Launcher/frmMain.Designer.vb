@@ -32,7 +32,10 @@ Partial Class frmMain
         Me.tmrControllerDetect = New System.Windows.Forms.Timer(Me.components)
         Me.pnlBackground = New System.Windows.Forms.Panel()
         Me.NotifyIcon = New System.Windows.Forms.NotifyIcon(Me.components)
+        Me.NotifyIconMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.NotifyIconMenuExit = New System.Windows.Forms.ToolStripMenuItem()
         Me.pnlBackground.SuspendLayout()
+        Me.NotifyIconMenu.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnKodi
@@ -118,6 +121,18 @@ Partial Class frmMain
         Me.NotifyIcon.Text = "Xb360 Launcher"
         Me.NotifyIcon.Visible = True
         '
+        'NotifyIconMenu
+        '
+        Me.NotifyIconMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NotifyIconMenuExit})
+        Me.NotifyIconMenu.Name = "NotifyIconMenu"
+        Me.NotifyIconMenu.Size = New System.Drawing.Size(153, 48)
+        '
+        'NotifyIconMenuExit
+        '
+        Me.NotifyIconMenuExit.Name = "NotifyIconMenuExit"
+        Me.NotifyIconMenuExit.Size = New System.Drawing.Size(152, 22)
+        Me.NotifyIconMenuExit.Text = "Exit"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -133,6 +148,7 @@ Partial Class frmMain
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.pnlBackground.ResumeLayout(False)
+        Me.NotifyIconMenu.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -144,5 +160,6 @@ Partial Class frmMain
     Friend WithEvents tmrControllerDetect As System.Windows.Forms.Timer
     Friend WithEvents pnlBackground As System.Windows.Forms.Panel
     Friend WithEvents NotifyIcon As System.Windows.Forms.NotifyIcon
-
+    Friend WithEvents NotifyIconMenu As ContextMenuStrip
+    Friend WithEvents NotifyIconMenuExit As ToolStripMenuItem
 End Class
