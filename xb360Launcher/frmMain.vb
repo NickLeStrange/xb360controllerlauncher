@@ -71,6 +71,19 @@ Public Class frmMain
         End Try
     End Sub
 
+    Public Sub FadeFormOut()
+        'This fades the form out when called after exiting this application or after selecting an application to start.
+        Try
+            For FadeOut = 1.1 To 0.0 Step -0.1
+                Me.Opacity = FadeOut
+                Me.Refresh()
+                Threading.Thread.Sleep(20)
+            Next
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
 #End Region
 
 #Region "NOTIFYICON"
@@ -103,6 +116,7 @@ Public Class frmMain
         'You have to configure Steam to start in Big Picture Mode when it is launched.
         'You always have to exit Steam completely.
         Process.Start("C:\Program Files (x86)\Steam\steam.exe", "-bigpicture")
+        FadeFormOut()
         Me.Visible = False
         NotifyIcon.Visible = True
     End Sub
@@ -121,6 +135,7 @@ Public Class frmMain
     Private Sub btnKodi_Click(sender As Object, e As EventArgs) Handles btnKodi.Click
         'Start Kodi.
         Process.Start("C:\Program Files (x86)\Kodi\Kodi.exe")
+        FadeFormOut()
         Me.Visible = False
         NotifyIcon.Visible = True
     End Sub
@@ -139,6 +154,7 @@ Public Class frmMain
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         'Exit
+        FadeFormOut()
         Me.Close()
     End Sub
 
