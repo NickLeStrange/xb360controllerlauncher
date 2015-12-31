@@ -1,5 +1,6 @@
 ﻿Imports Microsoft.Xna.Framework
 Imports Microsoft.Xna.Framework.Input
+Imports Microsoft.Win32
 
 Public Class frmMain
 
@@ -47,6 +48,7 @@ Public Class frmMain
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Load up whatever needs to be loaded.
         ButtonBorders()
+        FindPaths()
     End Sub
 
     Private Sub frmMain_Shown(sender As Object, e As EventArgs) Handles Me.Shown
@@ -59,29 +61,25 @@ Public Class frmMain
 #Region "FORM FADES"
 
     Public Sub FadeFormIn()
-        'This fades the form in when it is shown on the screen.
-        Try
-            For FadeIn = 0.0 To 1.1 Step 0.1
-                Me.Opacity = FadeIn
-                Me.Refresh()
-                Threading.Thread.Sleep(20)
-            Next
-        Catch ex As Exception
 
-        End Try
+        'This fades the form in when it is shown on the screen.
+        For FadeIn = 0.0 To 1.1 Step 0.1
+            Me.Opacity = FadeIn
+            Me.Refresh()
+            Threading.Thread.Sleep(20)
+        Next
+
     End Sub
 
     Public Sub FadeFormOut()
-        'This fades the form out when called after exiting this application or after selecting an application to start.
-        Try
-            For FadeOut = 1.1 To 0.0 Step -0.1
-                Me.Opacity = FadeOut
-                Me.Refresh()
-                Threading.Thread.Sleep(20)
-            Next
-        Catch ex As Exception
 
-        End Try
+        'This fades the form out when called after exiting this application or after selecting an application to start.
+        For FadeOut = 1.1 To 0.0 Step -0.1
+            Me.Opacity = FadeOut
+            Me.Refresh()
+            Threading.Thread.Sleep(20)
+        Next
+
     End Sub
 
 #End Region
@@ -102,6 +100,39 @@ Public Class frmMain
 
 #End Region
 
+#Region "APPLICATION PATHS"
+
+    Public Sub FindPaths()
+
+        Dim tempKodiPath As String
+        Dim tempSteamPath As String
+
+        'Get Steam's full path, including it's exe name, from it's registry keys 
+        tempSteamPath = Registry.GetValue("HKEY_CURRENT_USER\SOFTWARE\Valve\Steam", "SteamExe", "Key does not exist")
+        'If the key exists, store the exe path in application settings
+        If tempSteamPath <> "Key does not exist" Then
+            My.Settings.savedSteamPath = tempSteamPath
+        Else
+            MessageBox.Show("Cannot find Steam.exe using the path in the registry", "Error")
+        End If
+
+        'Kodi stores it's exe's folder location in a (Default) reg key, which always returns a value even when it does not exist. So first test for Kodi's subkey
+        'before attempting to get the value from (Default) key. This way avoids getting a bogus value if Kodi is not installed.
+        Dim regTestForSubkey As RegistryKey
+        regTestForSubkey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Kodi", True)
+        tempKodiPath = Registry.GetValue("HKEY_CURRENT_USER\SOFTWARE\Kodi", "", "Key does not exist")
+        'If the Kodi subkey exists AND the (Default) key is returning values, append the kodi.exe file name and save in application settings.
+        If tempKodiPath <> "Key does not exist" Or regTestForSubkey IsNot Nothing Then
+            tempKodiPath += "\kodi.exe"
+            My.Settings.savedKodiPath = tempKodiPath
+        Else
+            MessageBox.Show("Cannot find Kodi.exe path in registry", "Error")
+        End If
+
+    End Sub
+
+#End Region
+
 #Region "BUTTONS"
 
     Public Sub ButtonBorders()
@@ -112,10 +143,11 @@ Public Class frmMain
     End Sub
 
     Private Sub btnSteam_Click(sender As Object, e As EventArgs) Handles btnSteam.Click
-        'Start Steam. This command won't actually force it into big picture if it is already running.
-        'You have to configure Steam to start in Big Picture Mode when it is launched.
-        'You always have to exit Steam completely.
-        Process.Start("C:\Program Files (x86)\Steam\steam.exe", "-bigpicture")
+        'Start Steam using the path saved in application's settings. This command won't 
+        'actually force it into big picture if it Is already running. You have to configure 
+        'Steam to start in Big Picture Mode when it Is launched. You always have to exit 
+        'Steam completely.
+        Process.Start(My.Settings.savedSteamPath, "-bigpicture")
         FadeFormOut()
         Me.Visible = False
         NotifyIcon.Visible = True
@@ -133,8 +165,8 @@ Public Class frmMain
     End Sub
 
     Private Sub btnKodi_Click(sender As Object, e As EventArgs) Handles btnKodi.Click
-        'Start Kodi.
-        Process.Start("C:\Program Files (x86)\Kodi\Kodi.exe")
+        'Start Kodi using the path saved in application's settings
+        Process.Start(My.Settings.savedKodiPath)
         FadeFormOut()
         Me.Visible = False
         NotifyIcon.Visible = True
