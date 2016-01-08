@@ -34,6 +34,7 @@ Partial Class frmMain
         Me.NotifyIcon = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.NotifyIconMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.NotifyIconMenuExit = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tmrDS4Detect = New System.Windows.Forms.Timer(Me.components)
         Me.pnlBackground.SuspendLayout()
         Me.NotifyIconMenu.SuspendLayout()
         Me.SuspendLayout()
@@ -103,7 +104,6 @@ Partial Class frmMain
         '
         'tmrControllerDetect
         '
-        Me.tmrControllerDetect.Enabled = True
         '
         'pnlBackground
         '
@@ -125,13 +125,16 @@ Partial Class frmMain
         '
         Me.NotifyIconMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NotifyIconMenuExit})
         Me.NotifyIconMenu.Name = "NotifyIconMenu"
-        Me.NotifyIconMenu.Size = New System.Drawing.Size(153, 48)
+        Me.NotifyIconMenu.Size = New System.Drawing.Size(93, 26)
         '
         'NotifyIconMenuExit
         '
         Me.NotifyIconMenuExit.Name = "NotifyIconMenuExit"
-        Me.NotifyIconMenuExit.Size = New System.Drawing.Size(152, 22)
+        Me.NotifyIconMenuExit.Size = New System.Drawing.Size(92, 22)
         Me.NotifyIconMenuExit.Text = "Exit"
+        '
+        'tmrDS4Detect
+        '
         '
         'frmMain
         '
@@ -162,4 +165,5 @@ Partial Class frmMain
     Friend WithEvents NotifyIcon As System.Windows.Forms.NotifyIcon
     Friend WithEvents NotifyIconMenu As ContextMenuStrip
     Friend WithEvents NotifyIconMenuExit As ToolStripMenuItem
+    Friend WithEvents tmrDS4Detect As Timer
 End Class

@@ -22,3 +22,7 @@ C:\Users\Neil\github\xb360controllerlauncher\xb360Launcher\obj\Debug\xb360Launch
 C:\Users\Neil\github\xb360controllerlauncher\xb360Launcher\obj\Debug\xb360Launcher.frmMain.resources
 C:\Users\Neil\github\xb360controllerlauncher\xb360Launcher\obj\Debug\xb360Launcher.Resources.resources
 C:\Users\Neil\github\xb360controllerlauncher\xb360Launcher\obj\Debug\xb360Launcher.vbproj.GenerateResource.Cache
+C:\Users\Neil\github\xb360controllerlauncher\xb360Launcher\bin\Debug\SharpDX.DirectInput.dll
+C:\Users\Neil\github\xb360controllerlauncher\xb360Launcher\bin\Debug\SharpDX.dll
+C:\Users\Neil\github\xb360controllerlauncher\xb360Launcher\bin\Debug\SharpDX.xml
+C:\Users\Neil\github\xb360controllerlauncher\xb360Launcher\bin\Debug\SharpDX.DirectInput.xml
