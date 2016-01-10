@@ -263,8 +263,13 @@ Public Class frmMain
 
                 'Use the A button on the controller to launch the apps.
                 If currentState.Buttons.A = ButtonState.Pressed Then
-                    lblLaunchWhat.Text = "LAUNCHING SELECTION"
-                    ButtonAPressed = True
+                    If btnExit.Focused Then
+                        lblLaunchWhat.Text = "EXITING"
+                        ButtonAPressed = True
+                    Else
+                        lblLaunchWhat.Text = "LAUNCHING SELECTION"
+                        ButtonAPressed = True
+                    End If
                 ElseIf currentState.Buttons.A = ButtonState.Released Then
                     If ButtonAPressed = True Then
                         'Simulate the pressing of the Enter key to press the button.
@@ -407,8 +412,13 @@ Public Class frmMain
 
         'Use the X button on the controller to launch the apps.
         If ds4State.Buttons(1) = True Then
-            lblLaunchWhat.Text = "LAUNCHING SELECTION"
-            ButtonXPressed = True
+            If btnExit.Focused Then
+                lblLaunchWhat.Text = "EXITING"
+                ButtonXPressed = True
+            Else
+                lblLaunchWhat.Text = "LAUNCHING SELECTION"
+                ButtonXPressed = True
+            End If
         ElseIf ds4State.Buttons(1) = False Then
             If ButtonXPressed = True Then
                 'Simulate the pressing of the Enter key to press the button.
@@ -452,7 +462,6 @@ Public Class frmMain
                 End If
             End If
         End If
-
 
         'Use the PS Orb button to show the launcher.
         If ds4State.Buttons(12) = True Then
